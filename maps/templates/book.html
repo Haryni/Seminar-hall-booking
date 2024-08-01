@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Book Ticket</title>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    var hearts = document.querySelectorAll(".heart");
+
+    function color() {
+        this.style.color = "red";
+    }
+
+    // Adding a click event listener to trigger the color function for each heart element
+    hearts.forEach(function(heart) {
+        heart.addEventListener("click", color);
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var hearts = document.querySelectorAll(".item");
+
+    function color() {
+        // Remove red color from all elements
+        hearts.forEach(function(item) {
+            item.style.backgroundColor = "aliceblue"; 
+             item.style.color="black"// Set the default color here
+             
+        });
+
+        // Apply red color to the clicked element
+        this.style.backgroundColor = "red";
+        this.style.color="white";
+    }
+
+    // Adding a click event listener to trigger the color function for each heart element
+    hearts.forEach(function(heart) {
+        heart.addEventListener("click", color);
+    });
+});
+
+   
+
+  </script>
+</head>
+<style>
+      *{
+    margin:0;
+    padding:0;
+
+}
+body{
+    background-color:aliceblue;
+    opacity:1;
+    height: auto;
+}
+nav{
+    border-bottom: 1px solid black;
+}
+.nav-item{
+    margin-left:60px;
+    color:white;
+    font-size: 1.4rem;
+}
+.nav-link:hover{
+    color:aqua;
+}
+.nav-link{
+    color:black;
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight:bolder;
+    font-style: normal;
+    
+}
+
+.dropdown-item{
+    color:black;
+    
+}
+.dropdown-item:hover{
+    color:aqua;
+    background: none;
+}
+
+.logo{
+    width:60px;
+    height:60px;
+    border-radius: 50%;
+}
+ 
+.slidebar{
+    background-color: transparent;
+    color:white;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+
+}
+.btn-close{
+    color:white;
+}
+.slide{
+  width: 100%;
+  height:100px;
+  border-bottom: 1px solid gray;
+  position: sticky;
+  justify-content: space-between;
+    top: 0;
+    z-index: 1000; 
+    background-color: aliceblue;
+    margin-bottom: 20px;
+}
+.box{
+  
+  width:400px;
+  max-height:100px;
+  background-color:transparent;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-left: 100px;
+   overflow-x: scroll;
+  margin-top: 30px; 
+  padding: 10px;
+  
+}
+.item{
+ min-width:60px;
+  height:60px;
+   line-height: 80px;
+  border-radius: 20px;
+  border:1px solid gray;
+  display: flex;
+   flex-direction:column;
+   justify-content: center;
+   align-items: center;
+   margin-left: 20px;
+   font-weight: bolder;
+   overflow: hidden;
+   cursor: pointer;
+}
+.fill{
+  margin-top: 30px;
+}
+.item:active{
+  background-color: red;
+  color:white;
+}
+::-webkit-scrollbar{
+  background-color:transparent;
+}
+@media screen and (max-width:550px){
+  #time{
+    padding:10px;
+  }
+}
+</style>
+<body>
+    <nav class="navbar navbar bg-transparent">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDMyJKxlzhQXrqSwsx4D9KPOyPVqjugsx5ZA8VSRzqJQ&s" alt=""></a>
+          
+          <button  class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon "></span>
+          </button>
+          <div class="slidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header text-white border-bottom">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDMyJKxlzhQXrqSwsx4D9KPOyPVqjugsx5ZA8VSRzqJQ&s" alt=""></h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="{{url_for('index')}}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="#">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    others
+                  </a>
+                  <ul class="dropdown-menu bg-transparent">
+                    <li><a class="dropdown-item" href="#">Contact</a></li>
+                    <li><a class="dropdown-item" href="#">Portfolio</a></li>
+                    <li>
+                      <hr class="dropdown-divider text-white border-bottom">
+                    </li>
+                    <li><a class="dropdown-item" href="#"><button class="btn btn-danger">Logout</button></a></li>
+                  </ul>
+                </li>
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+      </nav>
+<!--Nav with book ticket-->
+      <div class="container-fluid text-dark border-bottom mt-4" style="height:100px;">
+        
+          <h1 class="justify-start text-dark">BOOK YOUR TICKECTS</h1>
+          <span class="badge rounded-pill text-bg-dark justify-start">HORROR</span>
+          <span class="badge rounded-pill text-bg-dark justify-start">THRILLER</span>
+          <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary bg-transparent border-0 text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <i class="fa-solid fa-circle-info"></i>info
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body  h-100 d-inline-block">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2018436.073051633!2d75.93580662118143!3d8.85555982179516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b04198691209ae3%3A0xaa959d216c5f24c4!2sAli%20brother&#39;s%20store!5e0!3m2!1sen!2sin!4v1709733704213!5m2!1sen!2sin" width="480px" height="450px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+     <!--Slide Steup-->
+       <div class="slide">
+        <div class="box">
+          <div class="item" style="opacity: 0;"></div>
+          <div class="item" style="opacity: 0;"></div>
+          <div class="item">01</div>
+          <div class="item"><p>tue</p>02 <p>mar</p></div>
+          <div class="item"><p>wed</p>03 <p>mar</p></div>
+          <div class="item"><p>thu</p>04 <p>mar</p></div>
+          <div class="item"><p>fri</p>05 <p>mar</p></div>
+          <div class="item"><p>sat</p>06 <p>mar</p></div>
+          
+        </div>
+
+        
+       </div>
+      <!--Ticket booking setup-->
+      <div class="container text-dark border-bottom d-flex justify-center flex-row" style="height:100px;">
+        
+        <div class="d-flex flex-column">
+
+         <p class="text-dark"><i class="fa-solid fa-heart heart" style="margin-right: 5px;color:gray;cursor: pointer;" onclick="color()"></i>Inox cinemas</p>
+         <span class=" d-flex flex-row gap-4">
+          <p class="text-success"><i class="fa-solid fa-mobile-screen"></i>M-Ticket</p>
+          <p class="text-warning "><i class="fa-solid fa-utensils"></i>Food & Beverage</p>
+           
+         </span>
+        </div>
+        <div class="d-flex flex-row">
+         <a href="{{url_for('select')}}" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">4.30AM</span></a>
+         <a href="{{url_for('select')}}" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">11.30AM</span></a>
+         <a href="{{url_for('select')}}" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">2.30PM</span></a>
+        </div>
+         
+      </div>
+      <div class="container text-dark border-bottom d-flex justify-center flex-row" style="height:100px;">
+        <div class="d-flex flex-column">
+         <p class="text-dark"><i class="fa-solid fa-heart heart" style="margin-right: 5px;color:gray;cursor: pointer; " onclick="color()" ></i>AWS cinemas</p>
+         <span class=" d-flex flex-row gap-4">
+          <p class="text-success"><i class="fa-solid fa-mobile-screen"></i>M-Ticket</p>
+          <p class="text-warning"><i class="fa-solid fa-utensils"></i>Food & Beverage</p>
+         
+         </span>
+        </div>
+        <div class="d-flex flex-row">
+        
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">11.30AM</span></a>
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">2.30PM</span></a>
+          <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">6.30PM</span></a>
+        </div>
+   
+</div>
+      </div>
+      <div class="container text-dark border-bottom d-flex justify-center flex-row" style="height:100px;">
+        <div class="d-flex flex-column">
+         <p class="text-dark"><i class="fa-solid fa-heart heart" style="margin-right: 5px;color:gray;cursor: pointer;" onclick="color()"></i>PVR cinemas</p>
+         <span class=" d-flex flex-row gap-4">
+          <p class="text-success"><i class="fa-solid fa-mobile-screen"></i>M-Ticket</p>
+          <p class="text-warning"><i class="fa-solid fa-utensils"></i>Food & Beverage</p>
+    
+         </span>
+        </div>
+        <div class="d-flex flex-row">
+        
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">2.30AM</span></a>
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">6.30PM</span></a>
+          <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">9.30PM</span></a>
+        </div>
+      </div>
+
+      <div class="container text-dark border-bottom d-flex justify-center flex-row" style="height:100px;">
+        <div class="d-flex flex-column">
+         <p class="text-dark"><i class="fa-solid fa-heart heart" style="margin-right: 5px;color:gray;cursor: pointer;" onclick="color()"></i>SVG cinemas</p>
+         <span class=" d-flex flex-row gap-4">
+          <p class="text-success"><i class="fa-solid fa-mobile-screen"></i>M-Ticket</p>
+          <p class="text-warning"><i class="fa-solid fa-utensils"></i>Food & Beverage</p>
+           
+         </span>
+        </div>
+        <div class="d-flex flex-row">
+        
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">2.30AM</span></a>
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">6.30PM</span></a>
+          <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">9.30PM</span></a>
+        </div>
+      </div>
+
+
+      <div class="container text-dark border-bottom d-flex justify-center flex-row" style="height:100px;">
+        <div class="d-flex flex-column">
+         <p class="text-dark"><i class="fa-solid fa-heart heart" style="margin-right: 5px;color:gray;cursor: pointer;" onclick="color()"></i>AVR cinemas</p>
+         <span class=" d-flex flex-row gap-4">
+          <p class="text-success"><i class="fa-solid fa-mobile-screen"></i>M-Ticket</p>
+          <p class="text-warning"><i class="fa-solid fa-utensils"></i>Food & Beverage</p>
+           
+         </span>
+        </div>
+        <div class="d-flex flex-row">
+        
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">2.30AM</span></a>
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">6.30PM</span></a>
+          <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">9.30PM</span></a>
+        </div>
+      </div>
+
+      <div class="container text-dark border-bottom d-flex justify-center flex-row" style="height:100px;">
+        <div class="d-flex flex-column">
+         <p class="text-dark"><i class="fa-solid fa-heart heart" style="margin-right: 5px;color:gray;cursor: pointer;" onclick="color()"></i>MGR cinemas</p>
+         <span class=" d-flex flex-row gap-4">
+          <p class="text-success"><i class="fa-solid fa-mobile-screen"></i>M-Ticket</p>
+          <p class="text-warning"><i class="fa-solid fa-utensils"></i>Food & Beverage</p>
+           
+         </span>
+        </div>
+        <div class="d-flex flex-row">
+        
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">2.30AM</span></a>
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">6.30PM</span></a>
+          <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">9.30PM</span></a>
+        </div>
+      </div>
+
+
+      
+      <div class="container text-dark border-bottom d-flex justify-center flex-row" style="height:100px;">
+        <div class="d-flex flex-column">
+         <p class="text-dark"><i class="fa-solid fa-heart heart" style="margin-right: 5px;color:gray;cursor: pointer;" onclick="color()"></i>PVR Mahal cinemas</p>
+         <span class=" d-flex flex-row gap-4">
+          <p class="text-success"><i class="fa-solid fa-mobile-screen"></i>M-Ticket</p>
+          <p class="text-warning"><i class="fa-solid fa-utensils"></i>Food & Beverage</p>
+           
+         </span>
+        </div>
+        <div class="d-flex flex-row">
+        
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">2.30AM</span></a>
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">6.30PM</span></a>
+          <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">9.30PM</span></a>
+        </div>
+      </div>
+ 
+
+      
+      <div class="container text-dark border-bottom d-flex justify-center flex-row" style="height:100px;">
+        <div class="d-flex flex-column">
+         <p class="text-dark"><i class="fa-solid fa-heart heart" style="margin-right: 5px;color:gray;cursor: pointer;;" onclick="color()"></i>SVD cinemas</p>
+         <span class=" d-flex flex-row gap-4">
+          <p class="text-success"><i class="fa-solid fa-mobile-screen"></i>M-Ticket</p>
+          <p class="text-warning"><i class="fa-solid fa-utensils"></i>Food & Beverage</p>
+           
+         </span>
+        </div>
+        <div class="d-flex flex-row">
+        
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">2.30AM</span></a>
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">6.30PM</span></a>
+          <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">9.30PM</span></a>
+        </div>
+      </div>
+
+
+      
+      <div class="container text-dark border-bottom d-flex justify-center flex-row" style="height:100px;">
+        <div class="d-flex flex-column">
+         <p class="text-dark"><i class="fa-solid fa-heart heart" style="margin-right: 5px;color:gray;cursor: pointer;" onclick="color()"></i>Imax cinemas</p>
+         <span class=" d-flex flex-row gap-4">
+          <p class="text-success"><i class="fa-solid fa-mobile-screen"></i>M-Ticket</p>
+          <p class="text-warning"><i class="fa-solid fa-utensils"></i>Food & Beverage</p>
+           
+         </span>
+        </div>
+        <div class="d-flex flex-row">
+        
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">2.30AM</span></a>
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">6.30PM</span></a>
+          <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">9.30PM</span></a>
+        </div>
+      </div>
+
+
+
+      
+      <div class="container text-dark border-bottom d-flex justify-center flex-row" style="height:100px;">
+        <div class="d-flex flex-column">
+         <p class="text-dark"><i class="fa-solid fa-heart heart" style="margin-right: 5px;color:gray; cursor: pointer;" onclick="color()"></i>Mayajal cinemas</p>
+         <span class=" d-flex flex-row gap-4">
+          <p class="text-success"><i class="fa-solid fa-mobile-screen"></i>M-Ticket</p>
+          <p class="text-warning"><i class="fa-solid fa-utensils"></i>Food & Beverage</p>
+           
+         </span>
+        </div>
+        <div class="d-flex flex-row">
+        
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">2.30AM</span></a>
+         <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">6.30PM</span></a>
+          <a href="#" style="text-decoration: none;"><span class="rounded-pill text-success border d-flex justify-center" id="time" style="margin-left: 20px; height:30px;padding:20px;display:flex;justify-content: center;align-items: center;margin-top: 20px;">9.30PM</span></a>
+        </div>
+      </div>
+
+
+</body>
+</html>

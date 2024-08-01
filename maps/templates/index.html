@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Book Ticket</title>
+</head>
+<style>
+    *{
+    margin:0;
+    padding:0;
+
+}
+body{
+    background-color:aliceblue;
+    opacity:1;
+    height: auto;
+}
+.nav-item{
+    margin-left:60px;
+    color:white;
+    font-size: 1.4rem;
+}
+.nav-link:hover{
+    color:aqua;
+}
+.nav-link{
+    color:black;
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight:bolder;
+    font-style: normal;
+    
+}
+
+.dropdown-item{
+    color:black;
+    
+}
+.dropdown-item:hover{
+    color:aqua;
+    background: none;
+}
+
+.logo{
+    width:60px;
+    height:60px;
+    border-radius: 50%;
+}
+ 
+.slidebar{
+    background-color: transparent;
+    color:white;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+
+}
+.btn-close{
+    color:white;
+}
+.body1{
+    width:100%;
+    height:200vh;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+.custom-box{
+    width: 1050px;
+    height:400px;
+    border-radius: 20px;
+    border:1px solid black;
+    overflow: hidden;
+    margin-left: 200px;
+    background-image: url("{{ url_for('static', filename='images/main.webp') }}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.custom-box h1{
+    color:aliceblue;
+    font-weight: bolder;
+    font-size: 4rem;
+    margin-top: 20px;
+    animation: left 2s ease forwards;
+
+}
+@keyframes  left {
+  from{
+    transform: translateX(-100%);
+  }
+  to{
+    transform: translateX(0%);
+  }
+}
+.box-container{
+  width:100%;
+  max-height:800px;
+  margin-top:20px;
+  background-color:transparent;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+::-webkit-scrollbar{
+  background-color:transparent;
+}
+.box{
+  width:300px;
+  height:500px;
+  border-radius: 20px;
+  border:1px solid black;
+  margin-left:20px;
+  margin-top: 20px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.box img{
+   max-width: 100%;
+   height: 100%;
+   z-index: -1;
+   position: absolute;
+}
+.box .show{
+  z-index:1;
+  color:white;
+  font-weight: bolder;
+  position: absolute;
+  background-color:steelblue;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 420px;
+  opacity: 0;
+}
+ 
+.box:hover .show{
+  opacity: 1;
+  animation:up 2s ease forwards;
+}
+@keyframes  up {
+  from{
+    transform: translateY(0%);
+    opacity: 0;
+  }
+  to{
+    transform: translateY(-1%);
+    opacity: 1;
+  }
+}
+
+ 
+.rec{
+  color:black;
+  font-weight: bolder;
+  margin-left: 50px;
+  margin-top: 50px;
+}
+a{
+  text-decoration: none;
+}
+ @media (max-width:550px) {
+    .custom-box{
+        width: 400px;
+        height:200px;
+        margin-left:20px;
+    }
+    .custom-box h1{
+      font-size: 2rem;
+    }
+    
+    .box{
+      width:150px;
+      height:350px;
+    }
+    .box .show{
+      margin-top: 280px;
+    }
+    .rec{
+      font-size:1.5rem;
+    }
+    .dropdown-item{
+      color:white;
+    }
+    .nav-link{
+        color:white;
+    }
+ }
+</style>
+<body class="container-fluid">
+    
+        <nav class="navbar navbar bg-transparent  ">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDMyJKxlzhQXrqSwsx4D9KPOyPVqjugsx5ZA8VSRzqJQ&s" alt=""></a>
+              
+              <button  class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon "></span>
+              </button>
+              <div class="slidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header text-white border-bottom">
+                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDMyJKxlzhQXrqSwsx4D9KPOyPVqjugsx5ZA8VSRzqJQ&s" alt=""></h5>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " href="#">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        others
+                      </a>
+                      <ul class="dropdown-menu bg-transparent">
+                        <li><a class="dropdown-item" href="#">Contact</a></li>
+                        <li><a class="dropdown-item" href="#">Portfolio</a></li>
+                        <li>
+                          <hr class="dropdown-divider text-white border-bottom">
+                        </li>
+                        <li><a class="dropdown-item" href="#"><button class="btn btn-danger">Logout</button></a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  
+                </div>
+              </div>
+            </div>
+          </nav>
+
+    <div class="body1">
+      <a href="{{url_for('book')}}"><div class="custom-box">
+        
+
+        <h1 style="margin-left: 30px;color:aquamarine">AVATAR 2</h1>
+        
+        <h1 style="color:aquamarine">EXCLUSIVE ON</h1>
+        </div></a>
+
+        <h1 class="rec">RECOMENDED MOVIES</h1>
+        
+        <div class="box-container">
+
+          
+          <a href="{{url_for('book')}}">
+              <div class="box">
+                  <img src="{{ url_for('static', filename='images/1.avif') }}" alt="">
+                  <div class="show">
+                      <h3>PUSHPA 2</h3>
+                      <h4>Sat 03/03</h4>
+                  </div>
+              </div>
+          </a>
+          
+
+        <a href="{{url_for('book')}}"> <div class="box">
+          <img src="{{ url_for('static', filename='images/2.jpg') }}" alt="">
+          <div class="show">
+            <h3>LAL SALAM</h3>
+            <h4>Sat 03/03</h4>
+           </div>
+         </div>
+        </a>
+
+        <a href="{{url_for('book')}}"> <div class="box">
+           <img src="{{ url_for('static', filename='images/3.jpg') }}" alt="">
+           <div class="show">
+            <h3>HANUMAN</h3>
+            <h4>Sat 03/03</h4>
+           </div>
+         </div></a>
+
+         <a href="{{url_for('book')}}"> <div class="box">
+         <img src="{{ url_for('static', filename='images/4.jpeg') }}" alt="">
+         <div class="show">
+          <h3>INSIDE OUT 2</h3>
+          <h4>Sat 03/03</h4>
+         </div>
+         </div></a>
+         <a href="{{url_for('book')}}"></a><div class="box">
+           <img src="{{ url_for('static', filename='images/9.jpg') }}" alt="">
+           <div class="show">
+            <h3  >US</h3>
+            <h4>Sat 03/03</h4>
+           </div>
+         </div></a>
+         <a href="{{url_for('book')}}"> <div class="box">
+           <img src="{{ url_for('static', filename='images/5.jpg') }}" alt="">
+           <div class="show">
+            <h3>BEEKEEPER</h3>
+            <h4>Sat 03/03</h4>
+           </div>
+         </div></a>
+         <a href="{{url_for('book')}}"><div class="box">
+          <img src="{{ url_for('static', filename='images/7.jpg') }}" alt="">
+          <div class="show">
+            <h3>CAPTAIN AMERICA</h3>
+            <h4>Sat 03/03</h4>
+           </div>
+        </div></a>
+        <a href="{{url_for('book')}}"><div class="box">
+          <img src="{{ url_for('static', filename='images/8.jpg') }}" alt="">
+          <div class="show">
+            <h3>JOKER</h3>
+            <h4>Sat 03/03</h4>
+           </div>
+        </div></a>
+         
+        </div>
+        
+    </div>
+</body>
+</html>
